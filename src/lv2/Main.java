@@ -1,4 +1,4 @@
-package lv1;
+package lv2;
 
 import java.util.Scanner;
 
@@ -19,10 +19,10 @@ public class Main {
         // 메뉴 불러오기
         while(true){
         System.out.println("[ 만다린 메뉴 ]");
-        System.out.println(1 + " 유니짜장\t|W 6900\t|맛있는 유니 짜장");
-        System.out.println(2 + " 간짜장 \t|W 6900\t|맛있는 유니 짜장");
-        System.out.println(3 + " 짬뽕\t|W 6900\t|맛있는 유니 짜장");
-        System.out.println(4 + " 삼선짬뽕\t|W 6900\t|맛있는 유니 짜장");
+        System.out.println(1 + " 유니짜장  " + "|" + "W  " + 6900 + "  | " + "맛있는 유니 짜장");
+        System.out.println(2 + " 간짜장    " + "|" + "W  " + 7500 + " | " + "맛있는 간짜장");
+        System.out.println(3 + " 짬뽕      " + "|" + "W  " + 8900 + " | " + "맛있는 짬뽕");
+        System.out.println(4 + " 삼선짬뽕   " + "|" + "W " + 11900 + " | " + "맛있는 삼선짬뽕");
         System.out.println(5 + " 종료하기");
         System.out.println("원하시는 메뉴를 선택하여주세요.");
         int choiceNum = sc.nextInt();
