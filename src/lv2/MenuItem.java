@@ -1,6 +1,7 @@
 package lv2;
 
 public class MenuItem {
+
     //속성
     //세부 메뉴에 들어갈 내용
    String name;
