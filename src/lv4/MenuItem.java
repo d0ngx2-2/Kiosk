@@ -14,14 +14,20 @@ public class MenuItem {
         this.price = price;
         this.description = description;
     }
+    MenuItem(String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 
     //기능
     public String getName() {
         return name;
     }
+
     public int getPrice() {
         return price;
     }
+
     public String getDescription() {
         return description;
     }

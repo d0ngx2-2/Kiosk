@@ -1,0 +1,81 @@
+데이터 모델링
+
+무엇을 객체로 만들까? → MenuItem, Menu, Kiosk
+
+각 객체의 책임을 정의
+
+관계 설계
+
+- Menu는 MenuItem을 포함
+
+- Kiosk는 Menu 리스트를 포함
+
+행동 정의
+
+- MenuItem → 단순 데이터 보관
+
+- Menu → 메뉴 추가, 메뉴 출력
+
+- Kiosk → 사용자 입력 + 선택 처리
+
+입력/출력 흐름
+
+- 사용자 선택 → 인덱스 활용 → 리스트 접근
+
+- 선택 결과 출력
+
+
+-----------------------------------------------------------
+
+메인에서 Menu 객체 생성
+
+“버거”, “음료” 등 카테고리 생성
+
+각각의 Menu에 MenuItem을 하나씩 추가
+
+Menu 리스트 생성
+
+Kiosk에 전달할 전체 메뉴 리스트 구성
+
+Kiosk 객체 생성
+
+생성자에 메뉴 리스트 전달
+
+Kiosk.start() 실행
+
+반복문 시작
+
+상위 카테고리 출력 → 사용자 선택
+
+선택한 Menu의 MenuItem 출력 → 사용자 선택
+
+선택한 MenuItem 정보 출력
+
+반복 또는 종료 조건 처리
+
+----------------------------------------------
+
+MenuItem
+
+속성: 이름, 가격, 설명
+
+메서드: getter (필요시 setter)
+
+Menu
+
+속성: 카테고리 이름, List<MenuItem>
+
+메서드:
+
+MenuItem 추가 (addMenuItem)
+
+메뉴 출력 (printMenuItems)
+
+리스트 반환 (getMenuItems)
+
+Kiosk
+
+필드: List<Menu>, Scanner
+
+메서드
+메뉴 출력 및 선택 처리 (start)
