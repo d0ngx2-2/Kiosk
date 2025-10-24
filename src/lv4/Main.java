@@ -35,7 +35,7 @@ public class Main {
         List<Menu> menus = new ArrayList<>();
         //Menu의 속성을 가진 List를 새로운 배열로 생성
         //Kiosk class에서 배열을 생성 및 관리하는 것은 아니라고 판단하였다.
-
+        
         menus.add(chinaFood);
         menus.add(drink);
         menus.add(desert);
