@@ -4,9 +4,9 @@ public class MenuItem {
 
     //속성
     //음식에 대한 세부 내용
-    String name;
-    int price;
-    String description;
+    private String name;
+    private  int price;
+    private String description;
 
     //생성자
     //생성자를 통해 값을 초기화
@@ -22,8 +22,8 @@ public class MenuItem {
     }
 
     //기능
-    //음식의 속성들을 프린트해주는 기능
-    public void Pint() {
+    //음식의 속성들을 출력해주는 기능
+    void Print() {
         System.out.println(this.name + "\t|W " + this.price + "\t| " + this.description);
     }
 }

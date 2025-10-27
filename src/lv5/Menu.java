@@ -7,8 +7,8 @@ import java.util.List;
 public class Menu {
     //속성
     //카테고리와, 메뉴아이템 객체를 가진 메뉴리스트를 선언
-    String categoryName;
-    List<MenuItem> menuItems;
+    private String categoryName;
+    private List<MenuItem> menuItems;
 
     //생성자
     //각 필드들을 초기화
@@ -32,10 +32,10 @@ public class Menu {
         return menuItems;
     }
     //그 카테고리에 있는 리스트만큼 출력시키는 print 기능
-    public void plintItems() {
+    public void printItems() {
         for (int i = 0; i<menuItems.size(); i++) {
             System.out.print((i+1) + " . ");
-            menuItems.get(i).Pint();
+            menuItems.get(i).Print();
         }
     }
 }

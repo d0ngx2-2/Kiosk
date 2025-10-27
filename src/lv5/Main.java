@@ -9,12 +9,10 @@ public class Main {
     public static void main(String[] args) {
         Menu chinaFood = new Menu("중식");
         //Menu class를 활용하여 카테고리 이름 객체를 생성한다.
-        //Menu [변수이름] = new Menu("카테고리")   :  Menu의 생성자로부터 데이터를 받아오기 때문이다.
         //*생성자 존재 이유와 Menu를 참조하게 됨으로 Menu의 메서드를 사용할 수 있게됨
 
         chinaFood.addMenuItem(new MenuItem("짜장면", 6900, "맛있는 짜장면"));
         //Menu class에 있는 메서드를 활용하여 음식 메뉴들과 세부내용을 새로운 객체로 생성 및 배열에 추가한다.
-        //[카테고리의 변수명].addMenuItem(new MenuItem("메뉴이름",가격,"설명"))
         //[변수명]은 Menu를 참조하고 있어 .add를 바로 호출하여 새로운 MenuItem의 객체를 생성하되 ()안에는 MenuItem의 생성자 형식에 맞게 넣어추가한다.
 
         chinaFood.addMenuItem(new MenuItem("간짜장", 7500, "맛있는 간짜장"));
@@ -34,7 +32,6 @@ public class Main {
 
         List<Menu> menus = new ArrayList<>();
         //Menu의 속성을 가진 List를 새로운 배열로 생성
-        //Kiosk class에서 배열을 생성 및 관리하는 것은 아니라고 판단하였다.
 
         menus.add(chinaFood);
         menus.add(drink);
