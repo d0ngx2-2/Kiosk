@@ -7,7 +7,7 @@ import java.util.Scanner;
 public class Kiosk {
     //속성
     //Menu의 데이터를 다루는 List 형태의 menus를 선언(카테고리 + 음식메뉴 세부내용)
-    private List<Menu> menus;
+    private final List<Menu> menus;
 
     //생성자
     Kiosk(List<Menu> menus) {

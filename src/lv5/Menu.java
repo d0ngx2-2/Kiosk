@@ -7,8 +7,8 @@ import java.util.List;
 public class Menu {
     //속성
     //카테고리와, 메뉴아이템 객체를 가진 메뉴리스트를 선언
-    private String categoryName;
-    private List<MenuItem> menuItems;
+    private final String categoryName;
+    private final List<MenuItem> menuItems;
 
     //생성자
     //각 필드들을 초기화

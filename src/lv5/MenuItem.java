@@ -4,9 +4,9 @@ public class MenuItem {
 
     //속성
     //음식에 대한 세부 내용
-    private String name;
+    private final String name;
     private  int price;
-    private String description;
+    private final String description;
 
     //생성자
     //생성자를 통해 값을 초기화
