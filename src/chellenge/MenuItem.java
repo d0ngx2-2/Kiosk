@@ -22,8 +22,18 @@ public class MenuItem {
     }
 
     //기능
-    //음식의 속성들을 출력해주는 기능
+    //음식의 속성들을 출력해주는 메서드
     void Print() {
         System.out.println(this.name + "\t|W " + this.price + "\t| " + this.description);
+    }
+    
+    //음식 이름을 반환하는 메서드
+    String getName() {
+        return this.name;
+    }
+    
+    //음식 가격을 반환하는 메서드
+    int getPrice() {
+        return this.price;
     }
 }
