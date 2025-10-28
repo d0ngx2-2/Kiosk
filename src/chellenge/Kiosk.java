@@ -123,8 +123,11 @@ public class Kiosk {
                 System.out.println(1 + ". [담는다]\n" + 2 + ". [취소]");
                 int basketChoice = sc.nextInt();
                 if (basketChoice == 1) {
-                    basket.addBasket(itemSelect);
-                    System.out.println("[ " + itemSelect.getName() + " ] 을 장바구니에 담았습니다.");
+                    System.out.println("담을 수량을 입력해주세요");
+                    int multichoice = sc.nextInt();
+
+                    basket.addBasket(itemSelect, multichoice);
+                    System.out.println("[ " + itemSelect.getName() + " " + multichoice + " 개 ] 을 장바구니에 담았습니다.");
                 } else if (basketChoice == 2) {
                     continue;
                 } else {

@@ -8,12 +8,15 @@ public class Basket {
     //속성
     //장바구니에 담을 새 배열을 생성
     private final List<MenuItem> basketList = new ArrayList<>();
+    List<Integer> multiNum = new ArrayList<>();
+    int multichoice;
     //생성자
 
     //기능
     //장바구니에 아이템을 담는기능
-    void addBasket(MenuItem item) {
+    void addBasket(MenuItem item, int multichoice) {
         basketList.add(item);
+        multiNum.add(multichoice);
     }
 
     //장바구니 아이템들을 전부 없애는 기능 Cancel
@@ -25,8 +28,7 @@ public class Basket {
     void basketPrint() {
         System.out.println("[ Basket 목록 ]");
         for (int i = 0; i < basketList.size(); i++) {
-            System.out.print((i + 1) + " . ");
-            basketList.get(i).Print();
+            System.out.println((i + 1) + " . " + basketList.get(i).getName() + "\t| " + multiNum.get(i) + "개 |\t" + basketList.get(i).getPrice() * multiNum.get(i) + "원");
         }
     }
 
@@ -39,7 +41,7 @@ public class Basket {
     int allPrice() {
         int sum = 0;
         for (int i = 0; i < basketList.size(); i++) {
-            sum += basketList.get(i).getPrice();
+            sum += basketList.get(i).getPrice() * multiNum.get(i);
         }
         return sum;
     }
