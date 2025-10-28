@@ -6,14 +6,13 @@ import java.util.List;
 //장바구니 기능을 위한 Basket class 생성
 public class Basket {
     //속성
-    //장바구니에 담을 새 배열을 생성
+    //장바구니에 담을 새 배열과 수량 배열을 생성
     private final List<MenuItem> basketList = new ArrayList<>();
     List<Integer> multiNum = new ArrayList<>();
-    int multichoice;
     //생성자
 
     //기능
-    //장바구니에 아이템을 담는기능
+    //장바구니에 아이템, 수량을 담는기능
     void addBasket(MenuItem item, int multichoice) {
         basketList.add(item);
         multiNum.add(multichoice);
