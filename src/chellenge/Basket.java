@@ -23,6 +23,7 @@ public class Basket {
     //장바구니 아이템들을 전부 없애는 기능 Cancel
     void removeAll() {
         this.basketList.clear();
+        this.multiNum.clear();
     }
 
     //장바구니 내 목록들을 보여주는 기능 Order (스트림 활요 버전)
@@ -65,6 +66,11 @@ public class Basket {
         this.basketList = IntStream.range(0, this.basketList.size())
                 .filter(i -> i != removeNum - 1)
                 .mapToObj(this.basketList::get)
+                .collect(Collectors.toList());
+
+        this.multiNum = IntStream.range(0, this.multiNum.size())
+                .filter(i -> i != removeNum - 1)
+                .mapToObj(this.multiNum::get)
                 .collect(Collectors.toList());
     }
 }

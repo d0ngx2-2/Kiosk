@@ -74,7 +74,7 @@ public class Kiosk {
                 }
 
                 //할인 메뉴 및 적용시키기
-                else if (payChoice == 2) {
+                if (payChoice == 2) {
                     System.out.println("적용할 할인을 선택하여 주세요.");
                     int discountChoice = inputHelper(sc, "1. [군인 할인]\t| 40%\n2. [쿠폰 할인]\t| 30%\n3. [쿠폰 할인]\t| 20%");
                     if (discountChoice == 1) {
