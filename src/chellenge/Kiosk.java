@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 //Main 함수에서 실행만을 위한 기능을 가진 Kiosk class 생성
+
 public class Kiosk {
     //속성
     //Menu의 데이터를 다루는 List 형태의 menus를 선언(카테고리 + 음식메뉴 세부내용)
@@ -44,7 +45,7 @@ public class Kiosk {
                 System.out.println(0 + " 종료하기");
             }
             //카테고리를 고를 때 쓸 변수
-            int categoriIndex = tCatch(sc,"[ 카테고리 ]를 선택해주세요.");
+            int categoriIndex = tCatch(sc, "[ 카테고리 ]를 선택해주세요.");
 
             //종료 기능 및 예외 처리
             if (categoriIndex == 0) {
@@ -55,41 +56,48 @@ public class Kiosk {
             else if (categoriIndex < 0 || categoriIndex - 1 >= menus.size() + 2) {
                 System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
                 continue;
+            } else if ((categoriIndex == 4 || categoriIndex == 5) && basket.getBasketList().isEmpty()) {
+                System.out.println("잘못된 숫자 입력입니다.");
+                continue;
             }
-            //장바구니 리스트 출력 및 결제
+            //장바구니 리스트 출력 및 주문
             else if (categoriIndex == 4) {
                 //장바구니에 실린 MenuItem List값들을 출력
-                if (!basket.getBasketList().isEmpty()) {
-                    basket.basketPrint();
-                    System.out.println("총 계산은 " + basket.allPrice() + "원 입니다. 결제하시겠습니까?");
-                } else {
-                    System.out.println("잘못된 숫자 입력입니다.");
+                basket.basketPrint();
+
+                //장바구니 주문
+                int payChoice = tCatch(sc, "총 계산금액은 " + basket.allPrice() + "원 입니다. \n1. [주문]\n2. [할인]");
+                if (payChoice == 1) {
+                    System.out.println("주문이 완료되었습니다. 감사합니다.");
+                    basket.removeAll();
                     continue;
                 }
 
-                //장바구니 결제
-                int payChoice = tCatch(sc,"1. [예]\n2. [아니오]");
-                if (payChoice == 1) {
-                    System.out.println("결제가 완료되었습니다. 감사합니다.");
-                    basket.removeAll();
-                    continue;
-                } else if (payChoice == 2) {
-                    continue;
+                //할인 메뉴 및 적용시키기
+                else if (payChoice == 2) {
+                    System.out.println("적용할 할인을 선택하여 주세요.");
+                    int discountChoice = tCatch(sc, "1. [군인 할인]\t| 40%\n2. [쿠폰 할인]\t| 30%\n3. [쿠폰 할인]\t| 20%");
+                    if (discountChoice == 1) {
+                        System.out.println("할인 적용 금액 : " + (int)Discount.SOLDIER.apply(basket.allPrice()) + "원\n[주문 완료]");
+                        basket.removeAll();
+                        continue;
+                    } else if (discountChoice == 2) {
+                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON1.apply(basket.allPrice()) + "원\n[주문 완료]");
+                        basket.removeAll();
+                        continue;
+                    } else if (discountChoice == 3) {
+                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON2.apply(basket.allPrice()) + "원\n[주문 완료]");
+                        basket.removeAll();
+                        continue;
+                    }
+
                 }
 
                 //장바구니 비우기
             } else if (categoriIndex == 5) {
-                if (!basket.getBasketList().isEmpty()) {
-                    System.out.println("장바구니를 비우시겠습니까?");
-                    int clearChoice = tCatch(sc,"1. [비운다] \n2. [취소]");
-                    if (clearChoice == 1) {
-                        basket.removeAll();
-                        System.out.println("[ 비우기 완료 ]");
-                        continue;
-                    } else if (clearChoice == 2) {
-                        continue;
-                    }
-                }
+                System.out.println("장바구니 비우기 완료");
+                basket.removeAll();
+                continue;
             }
 
             //해당 카테고리에 있는 메뉴리스트를 다음 함수에 선언
@@ -102,7 +110,7 @@ public class Kiosk {
             choiceMenu.printItems();
 
             System.out.println("0. 뒤로가기");
-            int itemIndex = tCatch(sc,"선택할 음식의 번호를 선택하여 주세요.");
+            int itemIndex = tCatch(sc, "선택할 음식의 번호를 선택하여 주세요.");
             if (itemIndex == 0) {
                 continue;
             }// 뒤로가기 기능
@@ -118,9 +126,9 @@ public class Kiosk {
 
             //장바구니에 담기
             System.out.println("선택한 메뉴를 장바구니에 담으시겠습니까?");
-            int basketChoice = tCatch(sc,"1. [담는다]\n2. [취소]");
+            int basketChoice = tCatch(sc, "1. [담는다]\n2. [취소]");
             if (basketChoice == 1) {
-                int multichoice = tCatch(sc,"담을 수량을 입력해주세요.");
+                int multichoice = tCatch(sc, "담을 수량을 입력해주세요.");
 
                 basket.addBasket(itemSelect, multichoice);
                 System.out.println("[ " + itemSelect.getName() + " " + multichoice + " 개 ] 을 장바구니에 담았습니다.");

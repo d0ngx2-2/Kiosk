@@ -8,7 +8,7 @@ public class Basket {
     //속성
     //장바구니에 담을 새 배열과 수량 배열을 생성
     private final List<MenuItem> basketList = new ArrayList<>();
-    List<Integer> multiNum = new ArrayList<>();
+    private List<Integer> multiNum = new ArrayList<>();
     //생성자
 
     //기능
@@ -27,7 +27,10 @@ public class Basket {
     void basketPrint() {
         System.out.println("[ Basket 목록 ]");
         for (int i = 0; i < basketList.size(); i++) {
-            System.out.println((i + 1) + " . " + basketList.get(i).getName() + "\t| " + multiNum.get(i) + "개 |\t" + basketList.get(i).getPrice() * multiNum.get(i) + "원");
+            System.out.println((i + 1) + " . "
+                    + basketList.get(i).getName()
+                    + "\t| " + multiNum.get(i) + "개 |\t"
+                    + basketList.get(i).getPrice() * multiNum.get(i) + "원");
         }
     }
 

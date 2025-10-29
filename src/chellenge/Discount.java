@@ -3,10 +3,9 @@ package chellenge;
 import java.util.function.Function;
 
 public enum Discount {
-    SOLDIER(price -> price * 0.4),
-    COUPON1(price -> price * 0.5),
-    COUPON2(price -> price * 0.6),
-    COUPON3(price -> price * 0.7);
+    SOLDIER(price -> price * 0.6),
+    COUPON1(price -> price * 0.7),
+    COUPON2(price -> price * 0.8);
 
     //속성
     private final Function<Integer, Double> priceFunction;
