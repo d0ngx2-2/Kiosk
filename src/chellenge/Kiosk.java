@@ -48,21 +48,17 @@ public class Kiosk {
             //카테고리를 고를 때 쓸 변수
             int categoryIndex = inputHelper(sc, "[ 카테고리 ]를 선택해주세요.");
 
-            //종료 기능 및 예외 처리
+            //장바구니 리스트 출력, 주문, 예외처리
             if (categoryIndex == 0) {
                 System.out.println("종료하겠습니다.\n");
                 break;
-            }
-            //0보다 작거나 카테고리 수보다 큰 숫자를 입력시 오류 문구 출력
-            else if (categoryIndex < 0 || categoryIndex - 1 >= menus.size() + 2) {
+            } else if (categoryIndex < 0 || categoryIndex - 1 >= menus.size() + 2) {
                 System.out.println("잘못된 숫자입니다. 다시 입력해주세요.\n");
                 continue;
             } else if ((categoryIndex == 4 || categoryIndex == 5) && this.basket.getBasketList().isEmpty()) {
                 System.out.println("잘못된 숫자 입력입니다.\n");
                 continue;
-            }
-            //장바구니 리스트 출력 및 주문
-            else if (categoryIndex == 4) {
+            } else if (categoryIndex == 4) {
                 //장바구니에 실린 MenuItem List값들을 출력
                 this.basket.basketPrint();
 
@@ -79,23 +75,23 @@ public class Kiosk {
                     System.out.println("적용할 할인을 선택하여 주세요.\n");
                     int discountChoice = inputHelper(sc, "1. [군인 할인]\t| 40%\n2. [쿠폰 할인]\t| 30%\n3. [쿠폰 할인]\t| 20%");
                     if (discountChoice == 1) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.SOLDIER.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
+                        System.out.println("할인 적용 금액 : " + (int) Discount.SOLDIER.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
                     } else if (discountChoice == 2) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON1.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
+                        System.out.println("할인 적용 금액 : " + (int) Discount.COUPON1.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
                     } else if (discountChoice == 3) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON2.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
+                        System.out.println("할인 적용 금액 : " + (int) Discount.COUPON2.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
                     } else {
                         System.out.println("잘못된 숫자 입력 입니다.");
                     }
-                //장바구니 리스트 중 선택 후 제거하기
+                    //장바구니 리스트 중 선택 후 제거하기
                 } else if (payChoice == 3) {
-                    int deleteChoice = inputHelper(sc,"삭제할 메뉴를 입력해주세요");
+                    int deleteChoice = inputHelper(sc, "삭제할 메뉴를 입력해주세요");
                     this.basket.removeBasket(deleteChoice);
                     continue;
                 } else if (payChoice == 4) {
@@ -105,7 +101,7 @@ public class Kiosk {
                     continue;
                 }
 
-             //장바구니 비우기
+                //장바구니 비우기
             } else if (categoryIndex == 5) {
                 System.out.println("장바구니 비우기 완료\n");
                 this.basket.removeAll();
