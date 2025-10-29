@@ -21,13 +21,13 @@ public class Main {
 
         Menu drink = new Menu("음료수");
         drink.addMenuItem(new MenuItem("코카콜라", 1500, "(뚱캔)시원한 코카콜라"));
-        drink.addMenuItem(new MenuItem("칠성사이다", 1500, "(뚱캔)시원한 사이다"));
-        drink.addMenuItem(new MenuItem("환타", 1500, "(뚱캔)오렌지 맛 환타"));
-        drink.addMenuItem(new MenuItem("환타", 1500, "(뚱캔)파인애플 맛 환타"));
-        drink.addMenuItem(new MenuItem("환타", 1500, "(뚱캔)포도맛 환타"));
+        drink.addMenuItem(new MenuItem("사이다", 1500, "(뚱캔)시원한 사이다"));
+        drink.addMenuItem(new MenuItem("환타파인", 1500, "(뚱캔)오렌지 맛 환타"));
+        drink.addMenuItem(new MenuItem("환타오렌지", 1500, "(뚱캔)파인애플 맛 환타"));
+        drink.addMenuItem(new MenuItem("환타포도", 1500, "(뚱캔)포도맛 환타"));
 
         Menu desert = new Menu("후식");
-        desert.addMenuItem(new MenuItem("식혜", "시원하고 맛난 식혜"));
+        desert.addMenuItem(new MenuItem("식혜   ", "시원하고 맛난 식혜"));
         desert.addMenuItem(new MenuItem("아이스크림", "다 드시고 셀프로 퍼가세요"));
 
         List<Menu> menus = new ArrayList<>();

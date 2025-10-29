@@ -2,6 +2,7 @@ package chellenge;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 //카테고리와 메뉴 리스트를 관리하기 위한 Menu class 생성
 public class Menu {
@@ -27,15 +28,25 @@ public class Menu {
     void addMenuItem(MenuItem menuItem) {
         menuItems.add(menuItem);
     }
+
     //그 리스트를 뽑아오는 기능
     public List<MenuItem> getMenuItems() {
         return menuItems;
     }
-    //그 카테고리에 있는 리스트만큼 출력시키는 print 기능
+
+    //그 카테고리에 있는 리스트만큼 출력시키는 print 기능 (스트림 활용 버전)
     public void printItems() {
-        for (int i = 0; i<menuItems.size(); i++) {
-            System.out.print((i+1) + " . ");
+        IntStream.range(0, menuItems.size()).forEach(i -> {
+            System.out.print((i + 1) + ". ");
             menuItems.get(i).Print();
-        }
+        });
+
+        //카테고리 리스트 출력( 기존 버전 )
+//        void printItems () {
+//            for (int i = 0; i < menuItems.size(); i++) {
+//                System.out.print((i + 1) + " . ");
+//                menuItems.get(i).Print();
+//            }
+//        }
     }
 }

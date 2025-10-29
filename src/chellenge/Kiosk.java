@@ -66,7 +66,7 @@ public class Kiosk {
                 basket.basketPrint();
 
                 //장바구니 주문
-                int payChoice = tCatch(sc, "총 계산금액은 " + basket.allPrice() + "원 입니다. \n1. [주문]\n2. [할인]");
+                int payChoice = tCatch(sc, "총 계산금액은 " + basket.allPrice() + "원 입니다. \n1. [주문]\n2. [할인]\n3. [메뉴 삭제]");
                 if (payChoice == 1) {
                     System.out.println("주문이 완료되었습니다. 감사합니다.");
                     basket.removeAll();
@@ -91,6 +91,10 @@ public class Kiosk {
                         continue;
                     }
 
+                } else if (payChoice == 3) {
+                    int deleteChoice = tCatch(sc,"삭제할 메뉴를 입력해주세요");
+                    basket.removeBasket(deleteChoice);
+                    continue;
                 }
 
                 //장바구니 비우기

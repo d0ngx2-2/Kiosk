@@ -25,7 +25,7 @@ public class MenuItem {
     //음식의 속성들을 출력해주는 메서드
     void Print() {
         System.out.println(this.name + "\t|W "
-                + this.price + "\t| "
+                + this.price + " \t| "
                 + this.description);
     }
     
