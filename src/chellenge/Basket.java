@@ -16,24 +16,23 @@ public class Basket {
     //기능
     //장바구니에 아이템, 수량을 담는기능
     void addBasket(MenuItem item, int multichoice) {
-        basketList.add(item);
-        multiNum.add(multichoice);
+        this.basketList.add(item);
+        this.multiNum.add(multichoice);
     }
 
     //장바구니 아이템들을 전부 없애는 기능 Cancel
     void removeAll() {
-        basketList.clear();
+        this.basketList.clear();
     }
 
     //장바구니 내 목록들을 보여주는 기능 Order (스트림 활요 버전)
     void basketPrint() {
         System.out.println("[ 장바구니 목록 ]");
-        IntStream.range(0, basketList.size()).forEach(i -> {
-            System.out.println((i+1) + ". "
-                    + basketList.get(i).getName()
-                    + "\t| " + multiNum.get(i) + "개 |\t"
-                    + basketList.get(i).getPrice() * multiNum.get(i) + "원");
-
+        IntStream.range(0, this.basketList.size()).forEach(i -> {
+            System.out.println((i + 1) + ". "
+                    + this.basketList.get(i).getName()
+                    + "\t| " + this.multiNum.get(i) + "개 |\t"
+                    + this.basketList.get(i).getPrice() * this.multiNum.get(i) + "원");
         });
     }
 
@@ -50,22 +49,22 @@ public class Basket {
 
     //장바구니를 반환하는 메서드
     List<MenuItem> getBasketList() {
-        return basketList;
+        return this.basketList;
     }
 
     //장바구니 내용의 총 합계를 보여주는 기능
     int allPrice() {
         int sum = 0;
-        for (int i = 0; i < basketList.size(); i++) {
-            sum += basketList.get(i).getPrice() * multiNum.get(i);
+        for (int i = 0; i < this.basketList.size(); i++) {
+            sum += this.basketList.get(i).getPrice() * this.multiNum.get(i);
         }
         return sum;
     }
 
     void removeBasket(int removeNum) {
-        basketList = IntStream.range(0, basketList.size())
-                    .filter(i -> i != removeNum - 1)
-                    .mapToObj(basketList::get)
-                    .collect(Collectors.toList());
+        this.basketList = IntStream.range(0, this.basketList.size())
+                .filter(i -> i != removeNum - 1)
+                .mapToObj(this.basketList::get)
+                .collect(Collectors.toList());
     }
 }

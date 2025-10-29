@@ -16,6 +16,6 @@ public enum Discount {
     }
     //기능
     public double apply(Integer price) {
-        return priceFunction.apply(price);
+        return this.priceFunction.apply(price);
     }
 }
