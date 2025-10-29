@@ -41,6 +41,8 @@ public class Menu {
             this.menuItems.get(i).Print();
         });
 
+    }
+}
         //카테고리 리스트 출력( 기존 버전 )
 //        void printItems () {
 //            for (int i = 0; i < menuItems.size(); i++) {
@@ -48,5 +50,3 @@ public class Menu {
 //                menuItems.get(i).Print();
 //            }
 //        }
-    }
-}

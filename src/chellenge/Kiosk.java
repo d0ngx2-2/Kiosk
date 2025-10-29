@@ -37,27 +37,28 @@ public class Kiosk {
             //Order Menu 생성 [장바구니가 비어져있다면 종료하기 버튼만 나오도록 조건문 작성]
             if (!this.basket.getBasketList().isEmpty()) {
                 System.out.println("""
-                        [ Order Menu ]
+                        \n[ Order Menu ]
                         4. Order\t| 장바구니 확인 후 결제합니다.
                         5. Canccel\t| 진행중인 주문을 취소합니다.
-                        0 종료하기""");
+                        0 종료하기\n""");
             } else {
-                System.out.println(0 + " 종료하기");
+                System.out.println(0 + " 종료하기\n");
             }
+
             //카테고리를 고를 때 쓸 변수
             int categoryIndex = inputHelper(sc, "[ 카테고리 ]를 선택해주세요.");
 
             //종료 기능 및 예외 처리
             if (categoryIndex == 0) {
-                System.out.println("종료하겠습니다.");
+                System.out.println("종료하겠습니다.\n");
                 break;
             }
             //0보다 작거나 카테고리 수보다 큰 숫자를 입력시 오류 문구 출력
             else if (categoryIndex < 0 || categoryIndex - 1 >= menus.size() + 2) {
-                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.\n");
                 continue;
             } else if ((categoryIndex == 4 || categoryIndex == 5) && this.basket.getBasketList().isEmpty()) {
-                System.out.println("잘못된 숫자 입력입니다.");
+                System.out.println("잘못된 숫자 입력입니다.\n");
                 continue;
             }
             //장바구니 리스트 출력 및 주문
@@ -65,41 +66,48 @@ public class Kiosk {
                 //장바구니에 실린 MenuItem List값들을 출력
                 this.basket.basketPrint();
 
-                //장바구니 주문
-                int payChoice = inputHelper(sc, "총 계산금액은 " + this.basket.allPrice() + "원 입니다. \n1. [주문]\n2. [할인]\n3. [메뉴 삭제]");
+                //장바구니 주문 후 클리어
+                int payChoice = inputHelper(sc, "\n총 계산금액은 " + this.basket.allPrice() + "원 입니다. 주문하시겠습니까? \n\n1. [주문]\n2. [할인]\n3. [메뉴 삭제]\n4. [뒤로 가기]");
                 if (payChoice == 1) {
-                    System.out.println("주문이 완료되었습니다. 감사합니다.");
+                    System.out.println("주문이 완료되었습니다. 감사합니다.\n");
                     this.basket.removeAll();
                     continue;
                 }
 
                 //할인 메뉴 및 적용시키기
                 if (payChoice == 2) {
-                    System.out.println("적용할 할인을 선택하여 주세요.");
+                    System.out.println("적용할 할인을 선택하여 주세요.\n");
                     int discountChoice = inputHelper(sc, "1. [군인 할인]\t| 40%\n2. [쿠폰 할인]\t| 30%\n3. [쿠폰 할인]\t| 20%");
                     if (discountChoice == 1) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.SOLDIER.apply(this.basket.allPrice()) + "원\n[주문 완료]");
+                        System.out.println("할인 적용 금액 : " + (int)Discount.SOLDIER.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
                     } else if (discountChoice == 2) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON1.apply(this.basket.allPrice()) + "원\n[주문 완료]");
+                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON1.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
                     } else if (discountChoice == 3) {
-                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON2.apply(this.basket.allPrice()) + "원\n[주문 완료]");
+                        System.out.println("할인 적용 금액 : " + (int)Discount.COUPON2.apply(this.basket.allPrice()) + "원\n[주문 완료]\n");
                         this.basket.removeAll();
                         continue;
+                    } else {
+                        System.out.println("잘못된 숫자 입력 입니다.");
                     }
-
+                //장바구니 리스트 중 선택 후 제거하기
                 } else if (payChoice == 3) {
                     int deleteChoice = inputHelper(sc,"삭제할 메뉴를 입력해주세요");
                     this.basket.removeBasket(deleteChoice);
                     continue;
+                } else if (payChoice == 4) {
+                    continue;
+                } else {
+                    System.out.println("잘못된 숫자 입력입니다.");
+                    continue;
                 }
 
-                //장바구니 비우기
+             //장바구니 비우기
             } else if (categoryIndex == 5) {
-                System.out.println("장바구니 비우기 완료");
+                System.out.println("장바구니 비우기 완료\n");
                 this.basket.removeAll();
                 continue;
             }
@@ -113,33 +121,31 @@ public class Kiosk {
             //입력한 숫자값 순서의 메뉴 리스트들을 출력
             choiceMenu.printItems();
 
-            System.out.println("0. 뒤로가기");
+            System.out.println("0. 뒤로가기\n");
             int itemIndex = inputHelper(sc, "선택할 음식의 번호를 선택하여 주세요.");
             if (itemIndex == 0) {
                 continue;
-            }// 뒤로가기 기능
-            if (itemIndex < 0 || itemIndex - 1 >= choiceMenu.getMenuItems().size()) {
-                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.");
+            } else if (itemIndex < 0 || itemIndex - 1 >= choiceMenu.getMenuItems().size()) {
+                System.out.println("잘못된 숫자입니다. 다시 입력해주세요.\n");
                 continue;
-            } //0보다 작거나 카테고리 수보다 큰 숫자를 입력시 오류 문구 출력
+            } //예외처리
 
             //선택한 카테고리의 메뉴리스트를 출력
             MenuItem itemSelect = choiceMenu.getMenuItems().get(itemIndex - 1);
             System.out.print("선택한 메뉴 : ");
-            itemSelect.Print();//카테고리의 아이템 리스트를 출력한다.
+            itemSelect.Print();
 
-            //장바구니에 담기
-            System.out.println("선택한 메뉴를 장바구니에 담으시겠습니까?");
+            //장바구니에 수량 선택 후 담기
+            System.out.println("선택한 메뉴를 장바구니에 담으시겠습니까?\n");
             int basketChoice = inputHelper(sc, "1. [담는다]\n2. [취소]");
             if (basketChoice == 1) {
                 int multichoice = inputHelper(sc, "담을 수량을 입력해주세요.");
-
-                this.basket.addBasket(itemSelect, multichoice);
-                System.out.println("[ " + itemSelect.getName() + " " + multichoice + " 개 ] 을 장바구니에 담았습니다.");
+                this.basket.addBasket(itemSelect, multichoice); //(아이템리스트,수량) 각 배열에 추가
+                System.out.println("[ " + itemSelect.getName() + " " + multichoice + " 개 ] 을 장바구니에 담았습니다.\n");
             } else if (basketChoice == 2) {
                 continue;
             } else {
-                System.out.println("잘못된 숫자 입력입니다.");
+                System.out.println("잘못된 숫자 입력입니다.\n");
             }
         }
         sc.close();

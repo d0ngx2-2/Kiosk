@@ -26,7 +26,7 @@ public class Basket {
         this.multiNum.clear();
     }
 
-    //장바구니 내 목록들을 보여주는 기능 Order (스트림 활요 버전)
+    //장바구니 내 목록들을 보여주는 기능 Order (스트림 활용 버전)
     void basketPrint() {
         System.out.println("[ 장바구니 목록 ]");
         IntStream.range(0, this.basketList.size()).forEach(i -> {
@@ -37,16 +37,6 @@ public class Basket {
         });
     }
 
-    // 장바구니 리스트 print (기존버전)
-//    void basketPrint() {
-//        System.out.println("[ Basket 목록 ]");
-//        for (int i = 0; i < basketList.size(); i++) {
-//            System.out.println((i + 1) + " . "
-//                    + basketList.get(i).getName()
-//                    + "\t| " + multiNum.get(i) + "개 |\t"
-//                    + basketList.get(i).getPrice() * multiNum.get(i) + "원");
-//        }
-//    }
 
     //장바구니를 반환하는 메서드
     List<MenuItem> getBasketList() {
@@ -62,6 +52,7 @@ public class Basket {
         return sum;
     }
 
+    //장바구니 리스트 중 선택 후 제거하는 기능
     void removeBasket(int removeNum) {
         this.basketList = IntStream.range(0, this.basketList.size())
                 .filter(i -> i != removeNum - 1)
@@ -74,3 +65,13 @@ public class Basket {
                 .collect(Collectors.toList());
     }
 }
+    // 장바구니 리스트 print (기존버전)
+//    void basketPrint() {
+//        System.out.println("[ Basket 목록 ]");
+//        for (int i = 0; i < basketList.size(); i++) {
+//            System.out.println((i + 1) + " . "
+//                    + basketList.get(i).getName()
+//                    + "\t| " + multiNum.get(i) + "개 |\t"
+//                    + basketList.get(i).getPrice() * multiNum.get(i) + "원");
+//        }
+//    }
