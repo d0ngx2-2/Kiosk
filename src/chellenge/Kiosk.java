@@ -52,7 +52,7 @@ public class Kiosk {
             if (categoryIndex == 0) {
                 System.out.println("종료하겠습니다.\n");
                 break;
-            } else if (categoryIndex < 0 || categoryIndex - 1 >= menus.size() + 2) {
+            } else if (categoryIndex < 0 || categoryIndex - 1 >= this.menus.size() + 2) {
                 System.out.println("잘못된 숫자입니다. 다시 입력해주세요.\n");
                 continue;
             } else if ((categoryIndex == 4 || categoryIndex == 5) && this.basket.getBasketList().isEmpty()) {
@@ -70,7 +70,7 @@ public class Kiosk {
                     continue;
                 }
 
-                //할인 메뉴 및 적용시키기
+                //할인 메뉴 및 적용시키기 및 예외처리
                 if (payChoice == 2) {
                     System.out.println("적용할 할인을 선택하여 주세요.\n");
                     int discountChoice = inputHelper(sc, "1. [군인 할인]\t| 40%\n2. [쿠폰 할인]\t| 30%\n3. [쿠폰 할인]\t| 20%");
@@ -89,7 +89,8 @@ public class Kiosk {
                     } else {
                         System.out.println("잘못된 숫자 입력 입니다.");
                     }
-                    //장바구니 리스트 중 선택 후 제거하기
+
+                //장바구니 리스트 중 선택 후 제거하기 및 예외처리
                 } else if (payChoice == 3) {
                     int deleteChoice = inputHelper(sc, "삭제할 메뉴를 입력해주세요");
                     this.basket.removeBasket(deleteChoice);
@@ -109,7 +110,7 @@ public class Kiosk {
             }
 
             //해당 카테고리에 있는 메뉴리스트를 다음 함수에 선언
-            Menu choiceMenu = menus.get(categoryIndex - 1);
+            Menu choiceMenu = this.menus.get(categoryIndex - 1);
 
             //카테고리 내 메뉴리스트 제목 출력 = 카테고리 이름
             System.out.println("[ " + choiceMenu.getCategoryName() + " 메뉴 ]");
